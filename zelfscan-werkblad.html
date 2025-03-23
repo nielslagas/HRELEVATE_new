@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Zelfscan Werkblad</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <script src="js/zelfscan-werkblad.js" defer></script>
+    <style>
+        /* Specific styles for the interactive worksheet */
+        .worksheet-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            border-radius: 8px;
+        }
+
+        .worksheet-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .worksheet-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .worksheet-section:last-child {
+            border-bottom: none;
+        }
+
+        .worksheet-section h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .worksheet-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .worksheet-section h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+            color: var(--text-color);
+        }
+
+        .worksheet-section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .worksheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: 4px;
+            overflow: hidden;
+            table-layout: fixed;
+        }
+
+        .worksheet-table th, .worksheet-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .worksheet-table th:first-child, .worksheet-table td:first-child, 
+        .worksheet-table th:nth-child(2), .worksheet-table td:nth-child(2) {
+            text-align: left;
+        }
+
+        .worksheet-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Ensure table cells are displayed horizontally */
+        .worksheet-table tr {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* Adjust column widths */
+        .worksheet-table th, .worksheet-table td {
+            flex: 1;
+        }
+
+        .worksheet-table th:first-child, .worksheet-table td:first-child {
+            flex: 0.5;
+        }
+
+        .worksheet-table th:nth-child(2), .worksheet-table td:nth-child(2) {
+            flex: 4;
+        }
+        
+        /* Special styling for the interpretation table */
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table th:nth-child(1),
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table td:nth-child(1) {
+            flex: 0.5; /* Score column */
+        }
+        
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table th:nth-child(2),
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table td:nth-child(2) {
+            flex: 0.3; /* Niveau column - even smaller */
+        }
+        
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table th:nth-child(3),
+        .worksheet-section:has(h3:contains("Interpretatie van je score")) .worksheet-table td:nth-child(3) {
+            flex: 10; /* Interpretatie column - even larger */
+        }
+
+        .worksheet-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .worksheet-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .checkbox-group {
+            display: flex;
+            justify-content: space-around;
+            width: 250px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            transition: background-color 0.3s;
+            margin: 0 auto;
+        }
+
+        .checkbox-container:hover {
+            background-color: rgba(58, 81, 153, 0.1);
+        }
+
+        .selected-cell {
+            background-color: rgba(58, 81, 153, 0.2);
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .score-input {
+            width: 60px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .total-score {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .action-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .action-table th, .action-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .action-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .action-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .action-table input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .action-table input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .action-table input[type="date"] {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .action-table input[type="date"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #interpretation-result {
+            background-color: rgba(58, 81, 153, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        #interpretation-level {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #interpretation-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .print-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .print-button:hover {
+            background-color: var(--text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .save-button {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--text-color);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .save-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .reset-button {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #f44336;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .reset-button:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        @media print {
+            header, footer, .button-group {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            .worksheet-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .worksheet-table, .action-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .save-button, .reset-button, .print-button {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="ebook-viewer">
+        <div class="container">
+            <div class="worksheet-container">
+                <h1 class="worksheet-title">Zelfscan Werkblad: Medewerkerparticipatie in Jouw Organisatie</h1>
+                
+                <section class="worksheet-section">
+                    <h2>Introductie</h2>
+                    <p>Dit zelfscan werkblad helpt je om de huidige staat van medewerkerparticipatie in jouw organisatie of team te evalueren. Door het invullen van deze scan krijg je inzicht in sterke punten en ontwikkelgebieden, wat je helpt om gerichte verbeteringen door te voeren.</p>
+                    
+                    <p><strong>Instructies:</strong></p>
+                    <ol>
+                        <li>Vul de scan eerlijk en realistisch in, gebaseerd op de huidige situatie (niet op wat je zou willen)</li>
+                        <li>Betrek bij voorkeur meerdere perspectieven (leidinggevenden én medewerkers)</li>
+                        <li>Gebruik de resultaten als startpunt voor gesprek en actie, niet als definitief oordeel</li>
+                    </ol>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Deel 1: Participatiecultuur</h2>
+                    <p>Beoordeel de volgende stellingen op een schaal van 1-5:<br>
+                    1 = Volledig oneens, 2 = Oneens, 3 = Neutraal, 4 = Eens, 5 = Volledig eens</p>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Stelling</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.1</td>
+                                <td>In onze organisatie/ons team worden medewerkers actief betrokken bij besluitvorming</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_1" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_1" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_1" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_1" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_1" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.2</td>
+                                <td>Leidinggevenden staan open voor input en ideeën van medewerkers</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_2" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_2" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_2" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_2" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_2" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.3</td>
+                                <td>Medewerkers voelen zich veilig om hun mening te uiten, ook als die afwijkt</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_3" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_3" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_3" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_3" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_3" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.4</td>
+                                <td>Er is transparantie over welke beslissingen participatief zijn en welke niet</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_4" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_4" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_4" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_4" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_4" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.5</td>
+                                <td>Medewerkers krijgen terugkoppeling over wat er met hun input gebeurt</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_5" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_5" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_5" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_5" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_5" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.6</td>
+                                <td>Er is voldoende tijd en ruimte gereserveerd voor participatieve processen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_6" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_6" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_6" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_6" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_6" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.7</td>
+                                <td>Succesvolle participatie-initiatieven worden gevierd en gedeeld</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_7" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_7" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_7" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_7" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_7" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>1.8</td>
+                                <td>Er is een cultuur waarin experimenteren en leren van fouten wordt aangemoedigd</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_8" value="1" onclick="updateScore(this, 'deel1', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_8" value="2" onclick="updateScore(this, 'deel1', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_8" value="3" onclick="updateScore(this, 'deel1', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_8" value="4" onclick="updateScore(this, 'deel1', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q1_8" value="5" onclick="updateScore(this, 'deel1', 5)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><strong>Subtotaal Participatiecultuur:</strong> <span id="deel1_score" class="total-score">0</span> / 40</p>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Deel 2: Leiderschapsvaardigheden</h2>
+                    <p>Beoordeel de volgende stellingen op een schaal van 1-5:<br>
+                    1 = Volledig oneens, 2 = Oneens, 3 = Neutraal, 4 = Eens, 5 = Volledig eens</p>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Stelling</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2.1</td>
+                                <td>Leidinggevenden hebben de vaardigheden om participatieve processen te faciliteren</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_1" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_1" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_1" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_1" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_1" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.2</td>
+                                <td>Leidinggevenden creëren psychologische veiligheid in hun teams</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_2" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_2" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_2" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_2" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_2" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.3</td>
+                                <td>Leidinggevenden kunnen effectief schakelen tussen directieve en faciliterende stijlen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_3" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_3" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_3" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_3" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_3" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.4</td>
+                                <td>Leidinggevenden zijn in staat om constructieve conflicten te begeleiden</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_4" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_4" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_4" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_4" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_4" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.5</td>
+                                <td>Leidinggevenden geven het goede voorbeeld door zelf open te staan voor feedback</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_5" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_5" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_5" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_5" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_5" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.6</td>
+                                <td>Leidinggevenden stellen duidelijke kaders waarbinnen participatie plaatsvindt</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_6" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_6" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_6" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_6" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_6" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.7</td>
+                                <td>Leidinggevenden zorgen voor inclusieve participatie (alle stemmen worden gehoord)</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_7" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_7" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_7" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_7" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_7" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>2.8</td>
+                                <td>Leidinggevenden worden ondersteund in het ontwikkelen van participatieve vaardigheden</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_8" value="1" onclick="updateScore(this, 'deel2', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_8" value="2" onclick="updateScore(this, 'deel2', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_8" value="3" onclick="updateScore(this, 'deel2', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_8" value="4" onclick="updateScore(this, 'deel2', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q2_8" value="5" onclick="updateScore(this, 'deel2', 5)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><strong>Subtotaal Leiderschapsvaardigheden:</strong> <span id="deel2_score" class="total-score">0</span> / 40</p>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Deel 3: Structuren en Processen</h2>
+                    <p>Beoordeel de volgende stellingen op een schaal van 1-5:<br>
+                    1 = Volledig oneens, 2 = Oneens, 3 = Neutraal, 4 = Eens, 5 = Volledig eens</p>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Stelling</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3.1</td>
+                                <td>Er zijn formele structuren voor medewerkerparticipatie (bijv. werkgroepen, raden)</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_1" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_1" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_1" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_1" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_1" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.2</td>
+                                <td>Er zijn duidelijke besluitvormingsprocessen die participatie faciliteren</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_2" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_2" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_2" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_2" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_2" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.3</td>
+                                <td>Er zijn effectieve communicatiekanalen voor tweerichtingsverkeer</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_3" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_3" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_3" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_3" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_3" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.4</td>
+                                <td>Er zijn tools en methoden beschikbaar om participatie te ondersteunen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_4" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_4" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_4" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_4" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_4" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.5</td>
+                                <td>Participatie-initiatieven worden systematisch geëvalueerd en verbeterd</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_5" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_5" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_5" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_5" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_5" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.6</td>
+                                <td>Er zijn mechanismen om participatie te integreren in dagelijkse werkprocessen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_6" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_6" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_6" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_6" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_6" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.7</td>
+                                <td>De fysieke en/of digitale werkomgeving ondersteunt collaboratie</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_7" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_7" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_7" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_7" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_7" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>3.8</td>
+                                <td>Er is een duidelijk escalatieproces wanneer participatieve besluitvorming vastloopt</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_8" value="1" onclick="updateScore(this, 'deel3', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_8" value="2" onclick="updateScore(this, 'deel3', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_8" value="3" onclick="updateScore(this, 'deel3', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_8" value="4" onclick="updateScore(this, 'deel3', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q3_8" value="5" onclick="updateScore(this, 'deel3', 5)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><strong>Subtotaal Structuren en Processen:</strong> <span id="deel3_score" class="total-score">0</span> / 40</p>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Deel 4: Toepassingsdomeinen</h2>
+                    <p>Beoordeel in welke mate medewerkers participeren in de volgende domeinen op een schaal van 1-5:<br>
+                    1 = Geen participatie, 2 = Minimale participatie, 3 = Gemiddelde participatie, 4 = Substantiële participatie, 5 = Volledige participatie</p>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Domein</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4.1</td>
+                                <td>Strategische beslissingen (missie, visie, langetermijndoelen)</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_1" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_1" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_1" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_1" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_1" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.2</td>
+                                <td>Organisatiestructuur en -ontwerp</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_2" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_2" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_2" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_2" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_2" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.3</td>
+                                <td>Werkprocessen en -methoden</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_3" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_3" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_3" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_3" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_3" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.4</td>
+                                <td>Productontwikkeling en innovatie</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_4" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_4" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_4" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_4" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_4" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.5</td>
+                                <td>Personeelsbeleid en HR-praktijken</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_5" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_5" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_5" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_5" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_5" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.6</td>
+                                <td>Werkomgeving (fysiek en digitaal)</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_6" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_6" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_6" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_6" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_6" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.7</td>
+                                <td>Kwaliteitsverbetering en probleemoplossing</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_7" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_7" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_7" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_7" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_7" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>4.8</td>
+                                <td>Dagelijkse operationele beslissingen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_8" value="1" onclick="updateScore(this, 'deel4', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_8" value="2" onclick="updateScore(this, 'deel4', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_8" value="3" onclick="updateScore(this, 'deel4', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_8" value="4" onclick="updateScore(this, 'deel4', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q4_8" value="5" onclick="updateScore(this, 'deel4', 5)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><strong>Subtotaal Toepassingsdomeinen:</strong> <span id="deel4_score" class="total-score">0</span> / 40</p>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Deel 5: Resultaten en Impact</h2>
+                    <p>Beoordeel de volgende stellingen op een schaal van 1-5:<br>
+                    1 = Volledig oneens, 2 = Oneens, 3 = Neutraal, 4 = Eens, 5 = Volledig eens</p>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Stelling</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5.1</td>
+                                <td>Medewerkerparticipatie heeft geleid tot betere beslissingen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_1" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_1" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_1" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_1" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_1" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.2</td>
+                                <td>Medewerkerparticipatie heeft geleid tot hogere medewerkerstevredenheid</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_2" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_2" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_2" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_2" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_2" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.3</td>
+                                <td>Medewerkerparticipatie heeft geleid tot meer innovatie</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_3" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_3" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_3" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_3" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_3" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.4</td>
+                                <td>Medewerkerparticipatie heeft geleid tot efficiëntere processen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_4" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_4" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_4" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_4" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_4" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.5</td>
+                                <td>Medewerkerparticipatie heeft geleid tot betere implementatie van veranderingen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_5" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_5" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_5" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_5" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_5" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.6</td>
+                                <td>Medewerkerparticipatie heeft geleid tot minder weerstand tegen beslissingen</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_6" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_6" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_6" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_6" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_6" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.7</td>
+                                <td>Medewerkerparticipatie heeft geleid tot meer eigenaarschap bij medewerkers</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_7" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_7" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_7" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_7" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_7" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                            <tr>
+                                <td>5.8</td>
+                                <td>De investering in participatie (tijd, middelen) levert aantoonbaar rendement op</td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_8" value="1" onclick="updateScore(this, 'deel5', 1)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_8" value="2" onclick="updateScore(this, 'deel5', 2)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_8" value="3" onclick="updateScore(this, 'deel5', 3)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_8" value="4" onclick="updateScore(this, 'deel5', 4)"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="q5_8" value="5" onclick="updateScore(this, 'deel5', 5)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><strong>Subtotaal Resultaten en Impact:</strong> <span id="deel5_score" class="total-score">0</span> / 40</p>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Totaalscore en Interpretatie</h2>
+                    <p>Tel de subtotalen van alle vijf secties bij elkaar op:</p>
+                    
+                    <p><strong>Totaalscore:</strong> <span id="total_score" class="total-score">0</span> / 200</p>
+                    
+                    <h3>Interpretatie van je score:</h3>
+                    
+                    <table class="worksheet-table">
+                        <thead>
+                            <tr>
+                                <th>Score</th>
+                                <th>Niveau</th>
+                                <th>Interpretatie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>160-200</td>
+                                <td>Excellent</td>
+                                <td>Jullie hebben een volwassen participatiecultuur met sterke structuren, processen en leiderschap. Focus op het verder verfijnen en innoveren van jullie aanpak.</td>
+                            </tr>
+                            <tr>
+                                <td>120-159</td>
+                                <td>Gevorderd</td>
+                                <td>Jullie hebben een goede basis voor participatie. Identificeer specifieke verbetergebieden en werk aan het verdiepen van participatie in meer domeinen.</td>
+                            </tr>
+                            <tr>
+                                <td>80-119</td>
+                                <td>In ontwikkeling</td>
+                                <td>Jullie hebben eerste stappen gezet richting participatie. Versterk de basis door te investeren in leiderschapsvaardigheden en formele structuren.</td>
+                            </tr>
+                            <tr>
+                                <td>40-79</td>
+                                <td>Beginnend</td>
+                                <td>Jullie staan aan het begin van de participatiereis. Begin met het creëren van psychologische veiligheid en experimenteer met laagdrempelige participatievormen.</td>
+                            </tr>
+                            <tr>
+                                <td>0-39</td>
+                                <td>Uitdagend</td>
+                                <td>Jullie organisatie heeft een traditionele, hiërarchische cultuur. Start met bewustwording bij het management en kleine pilotprojecten om de waarde van participatie te demonstreren.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div id="interpretation-result" class="worksheet-section" style="display: none;">
+                        <h3>Jouw resultaat: <span id="interpretation-level"></span></h3>
+                        <p id="interpretation-text"></p>
+                    </div>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Sterke punten en ontwikkelgebieden</h2>
+                    <p>Identificeer op basis van je antwoorden:</p>
+                    
+                    <h3>Top 3 sterke punten (hoogste scores):</h3>
+                    <ol>
+                        <li><textarea class="text-input" placeholder="Sterk punt 1"></textarea></li>
+                        <li><textarea class="text-input" placeholder="Sterk punt 2"></textarea></li>
+                        <li><textarea class="text-input" placeholder="Sterk punt 3"></textarea></li>
+                    </ol>
+                    
+                    <h3>Top 3 ontwikkelgebieden (laagste scores):</h3>
+                    <ol>
+                        <li><textarea class="text-input" placeholder="Ontwikkelgebied 1"></textarea></li>
+                        <li><textarea class="text-input" placeholder="Ontwikkelgebied 2"></textarea></li>
+                        <li><textarea class="text-input" placeholder="Ontwikkelgebied 3"></textarea></li>
+                    </ol>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Actieplan</h2>
+                    <p>Kies 1-3 concrete acties om medewerkerparticipatie te versterken:</p>
+                    
+                    <table class="action-table">
+                        <thead>
+                            <tr>
+                                <th>Actie</th>
+                                <th>Verantwoordelijke</th>
+                                <th>Deadline</th>
+                                <th>Gewenst resultaat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Wie is verantwoordelijk?"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Wat wil je bereiken?"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Wie is verantwoordelijk?"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Wat wil je bereiken?"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Wie is verantwoordelijk?"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Wat wil je bereiken?"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <section class="worksheet-section">
+                    <h2>Reflectievragen</h2>
+                    <p>Gebruik deze vragen om het gesprek over de resultaten te faciliteren:</p>
+                    
+                    <ol>
+                        <li>Wat verrast je aan de uitkomsten van deze zelfscan?</li>
+                        <li>Waar zie je de grootste kansen voor verbetering?</li>
+                        <li>Welke barrières moeten worden aangepakt om participatie te versterken?</li>
+                        <li>Welke succesvolle participatie-ervaringen kunnen we als voorbeeld gebruiken?</li>
+                        <li>Hoe kunnen we ervoor zorgen dat participatie geen eenmalig initiatief is maar een duurzaam onderdeel van onze cultuur?</li>
+                    </ol>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>

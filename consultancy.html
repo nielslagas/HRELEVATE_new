@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Consultancy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="consultancy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Consultancy</h2>
+                <p>Onze HR-experts staan klaar om uw organisatie te helpen groeien en de betrokkenheid van uw medewerkers te verhogen. Neem contact op voor een vrijblijvend gesprek over hoe wij u kunnen ondersteunen.</p>
+            </div>
+            
+            <div class="consultancy-content">
+                <div class="consultancy-info fade-in">
+                    <h3>Onze Expertise</h3>
+                    <ul>
+                        <li>Medewerkersbetrokkenheid & participatie</li>
+                        <li>HR-strategie & beleid</li>
+                        <li>Organisatieontwikkeling</li>
+                        <li>Leiderschapsontwikkeling</li>
+                        <li>Cultuurverandering</li>
+                        <li>Talentmanagement</li>
+                    </ul>
+                    
+                    <h3>Onze Aanpak</h3>
+                    <p>Wij geloven in een persoonlijke aanpak die is afgestemd op de specifieke behoeften en cultuur van uw organisatie. We beginnen met een grondige analyse, ontwikkelen een op maat gemaakte strategie, en begeleiden u bij de implementatie.</p>
+                </div>
+                
+                <div class="contact-form slide-in-right">
+                    <h3>Neem Contact Op</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Naam</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Bedrijf</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Bericht</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Verstuur</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add scrolled class to header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Activate animations when elements come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

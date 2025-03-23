@@ -1,0 +1,224 @@
+<th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Communicatie"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="1" onclick="updateRating(this, 'comp_coll_1')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="2" onclick="updateRating(this, 'comp_coll_1')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="3" onclick="updateRating(this, 'comp_coll_1')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="4" onclick="updateRating(this, 'comp_coll_1')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="5" onclick="updateRating(this, 'comp_coll_1')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_1" value="na" onclick="updateRating(this, 'comp_coll_1')"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Samenwerking in team"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="1" onclick="updateRating(this, 'comp_coll_2')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="2" onclick="updateRating(this, 'comp_coll_2')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="3" onclick="updateRating(this, 'comp_coll_2')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="4" onclick="updateRating(this, 'comp_coll_2')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="5" onclick="updateRating(this, 'comp_coll_2')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_2" value="na" onclick="updateRating(this, 'comp_coll_2')"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Feedback geven en ontvangen"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="1" onclick="updateRating(this, 'comp_coll_3')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="2" onclick="updateRating(this, 'comp_coll_3')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="3" onclick="updateRating(this, 'comp_coll_3')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="4" onclick="updateRating(this, 'comp_coll_3')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="5" onclick="updateRating(this, 'comp_coll_3')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_coll_3" value="na" onclick="updateRating(this, 'comp_coll_3')"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="collaboration_competencies_notes">Toelichting samenwerkingscompetenties:</label>
+                        <textarea id="collaboration_competencies_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van de samenwerkingscompetenties"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Toekomstperspectief</h2>
+                    
+                    <h3>Nieuwe doelstellingen voor komende periode</h3>
+                    <p>Formuleer SMART-doelstellingen (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden)</p>
+                    
+                    <div class="form-group">
+                        <label for="goal_1_next">Doelstelling 1:</label>
+                        <textarea id="goal_1_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal_2_next">Doelstelling 2:</label>
+                        <textarea id="goal_2_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal_3_next">Doelstelling 3:</label>
+                        <textarea id="goal_3_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <h3>Ontwikkelwensen en -behoeften</h3>
+                    <div class="form-group">
+                        <label for="development_needs">Welke kennis, vaardigheden of competenties wil de medewerker ontwikkelen?</label>
+                        <textarea id="development_needs" class="text-input" placeholder="Beschrijf de ontwikkelwensen en -behoeften van de medewerker"></textarea>
+                    </div>
+                    
+                    <h3>Loopbaanperspectief</h3>
+                    <div class="form-group">
+                        <label for="career_perspective">Hoe ziet de medewerker zijn/haar loopbaan op korte en lange termijn?</label>
+                        <textarea id="career_perspective" class="text-input" placeholder="Beschrijf het loopbaanperspectief van de medewerker"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Actieplan</h2>
+                    
+                    <p>Concrete acties om doelstellingen en ontwikkeling te realiseren:</p>
+                    
+                    <table class="action-table">
+                        <thead>
+                            <tr>
+                                <th>Actie</th>
+                                <th>Wie</th>
+                                <th>Deadline</th>
+                                <th>Benodigde middelen/ondersteuning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="evaluation_moments">Evaluatiemomenten:</label>
+                        <textarea id="evaluation_moments" class="text-input" placeholder="Beschrijf wanneer en hoe de voortgang wordt geëvalueerd"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>6. Overige bespreekpunten</h2>
+                    
+                    <div class="form-group">
+                        <label for="work_pressure">Werkdruk en werkplezier:</label>
+                        <textarea id="work_pressure" class="text-input" placeholder="Noteer besproken punten over werkdruk, werkplezier en werk-privé balans"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team_collaboration">Samenwerking in team:</label>
+                        <textarea id="team_collaboration" class="text-input" placeholder="Noteer besproken punten over de samenwerking binnen het team"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="other_topics">Overige onderwerpen:</label>
+                        <textarea id="other_topics" class="text-input" placeholder="Noteer andere besproken onderwerpen die niet in bovenstaande categorieën passen"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>7. Conclusie en afspraken</h2>
+                    
+                    <div class="form-group">
+                        <label for="conclusion">Samenvatting belangrijkste punten:</label>
+                        <textarea id="conclusion" class="text-input" placeholder="Vat de belangrijkste punten en conclusies van het gesprek samen"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="follow_up">Vervolgafspraken:</label>
+                        <textarea id="follow_up" class="text-input" placeholder="Beschrijf concrete vervolgafspraken, inclusief wanneer het volgende gesprek plaatsvindt"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_signature">Handtekening medewerker:</label>
+                                <input type="text" id="employee_signature" class="text-input" placeholder="Naam medewerker">
+                                <p><small>Datum: <span id="current_date"></span></small></p>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_signature">Handtekening leidinggevende:</label>
+                                <input type="text" id="manager_signature" class="text-input" placeholder="Naam leidinggevende">
+                                <p><small>Datum: <span id="current_date2"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

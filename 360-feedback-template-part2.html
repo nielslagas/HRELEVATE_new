@@ -1,0 +1,129 @@
+checkbox" name="comp_lead_5" value="3" onclick="updateRating(this, 'comp_lead_5')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_lead_5" value="4" onclick="updateRating(this, 'comp_lead_5')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_lead_5" value="5" onclick="updateRating(this, 'comp_lead_5')"></td>
+                                <td class="checkbox-container"><input type="checkbox" name="comp_lead_5" value="na" onclick="updateRating(this, 'comp_lead_5')"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="lead_competencies_notes">Toelichting leiderschap en persoonlijke effectiviteit:</label>
+                        <textarea id="lead_competencies_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van leiderschap en persoonlijke effectiviteit met concrete voorbeelden"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>3. Sterke punten en ontwikkelpunten</h2>
+                    
+                    <div class="form-group">
+                        <label for="strengths">Wat zijn de belangrijkste sterke punten van deze persoon?</label>
+                        <textarea id="strengths" class="text-input" placeholder="Beschrijf de sterke punten met concrete voorbeelden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="development_areas">Wat zijn de belangrijkste ontwikkelpunten van deze persoon?</label>
+                        <textarea id="development_areas" class="text-input" placeholder="Beschrijf de ontwikkelpunten met concrete voorbeelden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="development_suggestions">Welke suggesties heb je voor ontwikkeling?</label>
+                        <textarea id="development_suggestions" class="text-input" placeholder="Geef concrete suggesties voor ontwikkeling"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Algemene feedback</h2>
+                    
+                    <div class="form-group">
+                        <label for="overall_performance">Hoe beoordeel je de algehele prestatie van deze persoon?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="performance_1" name="overall_performance" value="1">
+                                <label for="performance_1">1 - Onvoldoende</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="performance_2" name="overall_performance" value="2">
+                                <label for="performance_2">2 - Matig</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="performance_3" name="overall_performance" value="3">
+                                <label for="performance_3">3 - Voldoende</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="performance_4" name="overall_performance" value="4">
+                                <label for="performance_4">4 - Goed</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="performance_5" name="overall_performance" value="5">
+                                <label for="performance_5">5 - Uitstekend</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additional_feedback">Aanvullende feedback of opmerkingen:</label>
+                        <textarea id="additional_feedback" class="text-input" placeholder="Geef aanvullende feedback of opmerkingen"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Afsluiting</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="provider_signature">Handtekening feedback gever:</label>
+                                <input type="text" id="provider_signature" class="text-input" placeholder="Naam feedback gever">
+                                <p><small>Datum: <span id="current_date"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

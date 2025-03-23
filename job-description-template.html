@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Functieomschrijving Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <link rel="stylesheet" href="css/templates.css">
+    <script src="js/job-description-template.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="ebook-viewer">
+        <div class="container">
+            <div class="template-container">
+                <h1 class="template-title">Functieomschrijving Template</h1>
+                
+                <section class="template-section">
+                    <h2>Introductie</h2>
+                    <p>Een goede functieomschrijving is essentieel voor het aantrekken van de juiste kandidaten en het duidelijk communiceren van verwachtingen. Deze template helpt je bij het opstellen van een professionele en complete functieomschrijving.</p>
+                    
+                    <p><strong>Instructies:</strong></p>
+                    <ol>
+                        <li>Vul de basisgegevens in over de functie</li>
+                        <li>Beschrijf het bedrijf en de afdeling</li>
+                        <li>Definieer de verantwoordelijkheden van de functie</li>
+                        <li>Specificeer de vereiste kwalificaties en vaardigheden</li>
+                        <li>Voeg informatie toe over arbeidsvoorwaarden en sollicitatieprocedure</li>
+                        <li>Bekijk de preview en pas aan waar nodig</li>
+                    </ol>
+                </section>
+                
+                <section class="template-section">
+                    <h2>1. Basisgegevens functie</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="job_title">Functietitel:</label>
+                                <input type="text" id="job_title" class="text-input" placeholder="Bijv. Marketing Manager, Software Developer, HR Adviseur">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="department">Afdeling:</label>
+                                <input type="text" id="department" class="text-input" placeholder="Bijv. Marketing, IT, HR">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="reports_to">Rapporteert aan:</label>
+                                <input type="text" id="reports_to" class="text-input" placeholder="Bijv. Marketing Director, CTO, HR Manager">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employment_type">Type dienstverband:</label>
+                                <select id="employment_type" class="select-input">
+                                    <option value="">Selecteer type</option>
+                                    <option value="fulltime">Fulltime</option>
+                                    <option value="parttime">Parttime</option>
+                                    <option value="temporary">Tijdelijk</option>
+                                    <option value="freelance">Freelance/ZZP</option>
+                                    <option value="internship">Stage</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="location">Locatie:</label>
+                                <input type="text" id="location" class="text-input" placeholder="Bijv. Amsterdam, Rotterdam, Utrecht">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="salary_range">Salarisindicatie:</label>
+                                <input type="text" id="salary_range" class="text-input" placeholder="Bijv. €3.000 - €4.000 per maand">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>2. Bedrijfs- en afdelingsinformatie</h2>
+                    
+                    <div class="form-group">
+                        <label for="company_description">Beschrijving van het bedrijf:</label>
+                        <textarea id="company_description" class="text-input" placeholder="Geef een korte beschrijving van het bedrijf, inclusief missie, visie, kernwaarden en bedrijfscultuur."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department_description">Beschrijving van de afdeling:</label>
+                        <textarea id="department_description" class="text-input" placeholder="Beschrijf de afdeling waar de functie onder valt, inclusief de rol van de afdeling binnen de organisatie en het team."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>3. Functieomschrijving en verantwoordelijkheden</h2>
+                    
+                    <div class="form-group">
+                        <label for="job_summary">Samenvatting van de functie:</label>
+                        <textarea id="job_summary" class="text-input" placeholder="Geef een beknopte samenvatting van de functie en het doel ervan binnen de organisatie."></textarea>
+                    </div>
+                    
+                    <h3>Belangrijkste verantwoordelijkheden</h3>
+                    <p>Voeg de belangrijkste verantwoordelijkheden en taken toe die bij de functie horen.</p>
+                    
+                    <div id="responsibilities-container">
+                        <!-- Responsibility items will be added here dynamically -->
+                        <div class="responsibility-container" id="responsibility-1">
+                            <div class="form-group">
+                                <label for="responsibility_1">Verantwoordelijkheid 1:</label>
+                                <textarea id="responsibility_1" class="text-input" placeholder="Beschrijf een specifieke verantwoordelijkheid of taak die bij de functie hoort."></textarea>
+                            </div>
+                            
+                            <button class="remove-item-button" onclick="removeResponsibility(1)">Verwijder</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-item-button" onclick="addResponsibility()">+ Voeg verantwoordelijkheid toe</button>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Kwalificaties en vaardigheden</h2>
+                    
+                    <h3>Vereiste kwalificaties</h3>
+                    <p>Voeg de vereiste kwalificaties, vaardigheden en ervaring toe die nodig zijn voor de functie.</p>
+                    
+                    <div id="qualifications-container">
+                        <!-- Qualification items will be added here dynamically -->
+                        <div class="qualification-container" id="qualification-1">
+                            <div class="form-group">
+                                <label for="qualification_1">Kwalificatie 1:</label>
+                                <textarea id="qualification_1" class="text-input" placeholder="Beschrijf een specifieke kwalificatie, vaardigheid of ervaring die vereist is voor de functie."></textarea>
+                            </div>
+                            
+                            <button class="remove-item-button" onclick="removeQualification(1)">Verwijder</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-item-button" onclick="addQualification()">+ Voeg kwalificatie toe</button>
+                    
+                    <h3>Gewenste kwalificaties (optioneel)</h3>
+                    
+                    <div class="form-group">
+                        <label for="preferred_qualifications">Gewenste kwalificaties:</label>
+                        <textarea id="preferred_qualifications" class="text-input" placeholder="Beschrijf eventuele aanvullende kwalificaties, vaardigheden of ervaring die een pluspunt zouden zijn, maar niet strikt noodzakelijk."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Arbeidsvoorwaarden en sollicitatieprocedure</h2>
+                    
+                    <div class="form-group">
+                        <label for="benefits">Arbeidsvoorwaarden en secundaire voorwaarden:</label>
+                        <textarea id="benefits" class="text-input" placeholder="Beschrijf de arbeidsvoorwaarden en secundaire voorwaarden die bij de functie horen, zoals pensioen, vakantiedagen, opleidingsmogelijkheden, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="application_process">Sollicitatieprocedure:</label>
+                        <textarea id="application_process" class="text-input" placeholder="Beschrijf de sollicitatieprocedure, inclusief hoe kandidaten kunnen solliciteren, welke documenten ze moeten aanleveren, en hoe het selectieproces verloopt."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_info">Contactinformatie:</label>
+                        <textarea id="contact_info" class="text-input" placeholder="Geef contactinformatie voor vragen over de functie of de sollicitatieprocedure."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>6. Preview functieomschrijving</h2>
+                    
+                    <button class="add-item-button" onclick="generatePreview()">Genereer preview</button>
+                    
+                    <div id="preview-container" class="preview-container" style="display: none;">
+                        <h2 id="preview-title">Functieomschrijving: [Functietitel]</h2>
+                        
+                        <div class="preview-section">
+                            <h3>Over ons</h3>
+                            <p id="preview-company"></p>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Over de afdeling</h3>
+                            <p id="preview-department"></p>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Functieomschrijving</h3>
+                            <p id="preview-summary"></p>
+                            
+                            <h4>Verantwoordelijkheden</h4>
+                            <ul id="preview-responsibilities"></ul>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Kwalificaties</h3>
+                            <ul id="preview-qualifications"></ul>
+                            
+                            <h4>Gewenste kwalificaties</h4>
+                            <p id="preview-preferred"></p>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Wat wij bieden</h3>
+                            <p id="preview-benefits"></p>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Sollicitatieprocedure</h3>
+                            <p id="preview-application"></p>
+                        </div>
+                        
+                        <div class="preview-section">
+                            <h3>Contact</h3>
+                            <p id="preview-contact"></p>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

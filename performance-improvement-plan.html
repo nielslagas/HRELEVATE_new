@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Performance Improvement Plan Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <link rel="stylesheet" href="css/templates.css">
+    <script src="js/performance-improvement-plan.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="ebook-viewer">
+        <div class="container">
+            <div class="template-container">
+                <h1 class="template-title">Performance Improvement Plan</h1>
+                
+                <section class="template-section">
+                    <h2>Introductie</h2>
+                    <p>Een Performance Improvement Plan (PIP) is een formeel document dat wordt gebruikt om medewerkers te helpen hun prestaties te verbeteren. Het identificeert specifieke prestatiegebieden die verbetering behoeven, stelt duidelijke doelen en verwachtingen, en biedt een tijdlijn voor verbetering.</p>
+                    
+                    <p><strong>Instructies:</strong></p>
+                    <ol>
+                        <li>Vul de basisgegevens in over de medewerker en de manager</li>
+                        <li>Beschrijf de prestatiegebieden die verbetering behoeven</li>
+                        <li>Stel specifieke, meetbare, haalbare, relevante en tijdgebonden (SMART) doelen op</li>
+                        <li>Definieer de ondersteuning en resources die worden geboden</li>
+                        <li>Stel een tijdlijn op voor evaluatie en follow-up</li>
+                        <li>Laat zowel de medewerker als de manager het plan ondertekenen</li>
+                    </ol>
+                </section>
+                
+                <section class="template-section">
+                    <h2>1. Basisgegevens</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_name">Naam medewerker:</label>
+                                <input type="text" id="employee_name" class="text-input" placeholder="Volledige naam">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_function">Functie:</label>
+                                <input type="text" id="employee_function" class="text-input" placeholder="Functietitel">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_department">Afdeling:</label>
+                                <input type="text" id="employee_department" class="text-input" placeholder="Afdeling">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_id">Medewerker ID:</label>
+                                <input type="text" id="employee_id" class="text-input" placeholder="Medewerker ID">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_name">Naam manager:</label>
+                                <input type="text" id="manager_name" class="text-input" placeholder="Naam manager">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_function">Functie manager:</label>
+                                <input type="text" id="manager_function" class="text-input" placeholder="Functietitel manager">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="pip_start_date">Startdatum PIP:</label>
+                                <input type="date" id="pip_start_date" class="date-input">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="pip_end_date">Einddatum PIP:</label>
+                                <input type="date" id="pip_end_date" class="date-input">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>2. Prestatiegebieden die verbetering behoeven</h2>
+                    
+                    <div class="form-group">
+                        <label for="performance_issues">Beschrijf de specifieke prestatiegebieden die verbetering behoeven:</label>
+                        <textarea id="performance_issues" class="text-input" placeholder="Geef een gedetailleerde beschrijving van de prestatiegebieden die verbetering behoeven. Wees specifiek en objectief, en verwijs naar concrete voorbeelden."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="previous_feedback">Eerdere feedback en coaching:</label>
+                        <textarea id="previous_feedback" class="text-input" placeholder="Beschrijf eerdere feedback, coaching of waarschuwingen die aan de medewerker zijn gegeven met betrekking tot deze prestatiegebieden."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="impact">Impact op team/organisatie:</label>
+                        <textarea id="impact" class="text-input" placeholder="Beschrijf de impact van de prestatieproblemen op het team, de afdeling of de organisatie."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>3. Verbeterdoelen en actieplan</h2>
+                    
+                    <p>Definieer specifieke, meetbare, haalbare, relevante en tijdgebonden (SMART) doelen voor verbetering. Voor elk doel, specificeer de verwachte resultaten, acties die de medewerker moet ondernemen, en hoe de voortgang zal worden gemeten.</p>
+                    
+                    <div id="goals-container">
+                        <!-- Goal templates will be added here dynamically -->
+                        <div class="goal-container" id="goal-1">
+                            <h3>Doel 1</h3>
+                            
+                            <div class="form-group">
+                                <label for="goal_description_1">Doelomschrijving:</label>
+                                <textarea id="goal_description_1" class="text-input" placeholder="Beschrijf het specifieke doel dat de medewerker moet bereiken."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expected_results_1">Verwachte resultaten:</label>
+                                <textarea id="expected_results_1" class="text-input" placeholder="Beschrijf de specifieke, meetbare resultaten die worden verwacht."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="action_steps_1">Actiestappen:</label>
+                                <textarea id="action_steps_1" class="text-input" placeholder="Beschrijf de specifieke stappen die de medewerker moet nemen om het doel te bereiken."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="measurement_1">Meting en evaluatie:</label>
+                                <textarea id="measurement_1" class="text-input" placeholder="Beschrijf hoe de voortgang zal worden gemeten en geëvalueerd."></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="goal_start_date_1">Startdatum:</label>
+                                        <input type="date" id="goal_start_date_1" class="date-input">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="goal_end_date_1">Einddatum:</label>
+                                        <input type="date" id="goal_end_date_1" class="date-input">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="remove-goal-button" onclick="removeGoal(1)">Verwijder doel</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-goal-button" onclick="addGoal()">+ Voeg doel toe</button>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Ondersteuning en resources</h2>
+                    
+                    <div class="form-group">
+                        <label for="support_resources">Beschrijf de ondersteuning, training, resources of begeleiding die aan de medewerker zullen worden geboden:</label>
+                        <textarea id="support_resources" class="text-input" placeholder="Beschrijf specifieke ondersteuning, training, resources of begeleiding die aan de medewerker zullen worden geboden om de prestaties te verbeteren."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Voortgangsevaluatie en follow-up</h2>
+                    
+                    <div class="form-group">
+                        <label for="evaluation_schedule">Schema voor voortgangsevaluatie:</label>
+                        <textarea id="evaluation_schedule" class="text-input" placeholder="Beschrijf hoe vaak de voortgang zal worden geëvalueerd en wanneer formele evaluatiegesprekken zullen plaatsvinden."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="consequences">Gevolgen van niet-verbetering:</label>
+                        <textarea id="consequences" class="text-input" placeholder="Beschrijf de mogelijke gevolgen als de prestaties niet verbeteren tot het vereiste niveau binnen de gestelde termijn."></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>6. Ondertekening</h2>
+                    
+                    <p>Door dit Performance Improvement Plan te ondertekenen, erkennen zowel de medewerker als de manager dat ze de inhoud hebben besproken, de verwachtingen begrijpen, en zich inzetten voor het verbeteren van de prestaties.</p>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_signature">Handtekening medewerker:</label>
+                                <input type="text" id="employee_signature" class="text-input" placeholder="Naam medewerker">
+                                <p><small>Datum: <span id="employee_sign_date"></span></small></p>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_signature">Handtekening manager:</label>
+                                <input type="text" id="manager_signature" class="text-input" placeholder="Naam manager">
+                                <p><small>Datum: <span id="manager_sign_date"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="hr_signature">Handtekening HR vertegenwoordiger (indien van toepassing):</label>
+                                <input type="text" id="hr_signature" class="text-input" placeholder="Naam HR vertegenwoordiger">
+                                <p><small>Datum: <span id="hr_sign_date"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Zelfscan Werkblad</title>
+    <script>
+        console.log("Before loading zelfscan-werkblad.js");
+        
+        // Add error handling for script loading
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error("JavaScript error:", message, "at", source, "line:", lineno);
+            return false;
+        };
+    </script>
+    <script src="js/zelfscan-werkblad.js" defer></script>
+    <script>
+        // Check if the script loaded correctly
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log("DOMContentLoaded event fired");
+            
+            // Check if updateScore function exists
+            if (typeof updateScore === 'function') {
+                console.log("updateScore function exists");
+            } else {
+                console.error("updateScore function does not exist");
+            }
+            
+            // Try to access the scores object
+            try {
+                console.log("Initial scores:", scores);
+            } catch (e) {
+                console.error("Error accessing scores:", e.message);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Test Zelfscan Werkblad</h1>
+    
+    <p>This is a test page to check if the zelfscan-werkblad.js file is loading correctly.</p>
+    
+    <div>
+        <h2>Test Checkbox</h2>
+        <input type="checkbox" name="q1_1" value="5" onclick="updateScore(this, 'deel1', 5)"> Test checkbox
+    </div>
+    
+    <div>
+        <h2>Score Display</h2>
+        <p>Deel 1 Score: <span id="deel1_score">0</span></p>
+        <p>Total Score: <span id="total_score">0</span></p>
+    </div>
+</body>
+</html>

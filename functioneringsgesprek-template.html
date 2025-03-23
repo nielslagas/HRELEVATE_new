@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Functioneringsgesprek Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <link rel="stylesheet" href="css/templates.css">
+    <script src="js/functioneringsgesprek-template.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="ebook-viewer">
+        <div class="container">
+            <div class="template-container">
+                <h1 class="template-title">Functioneringsgesprek Template</h1>
+                
+                <section class="template-section">
+                    <h2>Introductie</h2>
+                    <p>Deze template helpt leidinggevenden bij het voorbereiden, uitvoeren en documenteren van functioneringsgesprekken. Het biedt een gestructureerde aanpak om de prestaties, ontwikkeling en doelen van medewerkers te bespreken.</p>
+                    
+                    <p><strong>Instructies:</strong></p>
+                    <ol>
+                        <li>Vul alle relevante secties in voorafgaand aan het gesprek</li>
+                        <li>Gebruik de template tijdens het gesprek om aantekeningen te maken</li>
+                        <li>Vul na afloop de conclusies en afspraken in</li>
+                        <li>Sla het document op en/of print het uit voor ondertekening</li>
+                        <li>Deel het ingevulde document met de medewerker</li>
+                    </ol>
+                </section>
+                
+                <section class="template-section">
+                    <h2>1. Basisgegevens</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_name">Naam medewerker:</label>
+                                <input type="text" id="employee_name" class="text-input" placeholder="Volledige naam">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_function">Functie:</label>
+                                <input type="text" id="employee_function" class="text-input" placeholder="Functietitel">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_department">Afdeling:</label>
+                                <input type="text" id="employee_department" class="text-input" placeholder="Afdeling">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_name">Naam leidinggevende:</label>
+                                <input type="text" id="manager_name" class="text-input" placeholder="Naam leidinggevende">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="review_date">Datum gesprek:</label>
+                                <input type="date" id="review_date" class="date-input">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="review_type">Type gesprek:</label>
+                                <select id="review_type" class="select-input">
+                                    <option value="">Selecteer type</option>
+                                    <option value="annual">Jaarlijks functioneringsgesprek</option>
+                                    <option value="biannual">Halfjaarlijks functioneringsgesprek</option>
+                                    <option value="quarterly">Kwartaalgesprek</option>
+                                    <option value="other">Anders</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>2. Terugblik op afgelopen periode</h2>
+                    
+                    <h3>Evaluatie van doelstellingen uit vorige gesprek</h3>
+                    <p>Beoordeel de mate waarin eerder gestelde doelen zijn behaald op een schaal van 1-5:<br>
+                    1 = Niet behaald, 2 = Gedeeltelijk behaald, 3 = Voldoende behaald, 4 = Goed behaald, 5 = Uitstekend behaald</p>
+                    
+                    <table class="rating-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Doelstelling</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Doelstelling 1"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="1" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="2" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="3" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="4" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="5" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_1" value="na" onclick="updateRating(this, 'goal_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Doelstelling 2"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="1" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="2" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="3" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="4" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="5" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_2" value="na" onclick="updateRating(this, 'goal_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Doelstelling 3"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="1" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="2" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="3" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="4" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="5" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_3" value="na" onclick="updateRating(this, 'goal_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Doelstelling 4"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="1" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="2" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="3" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="4" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="5" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="goal_4" value="na" onclick="updateRating(this, 'goal_4')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="achievements">Behaalde resultaten en successen:</label>
+                        <textarea id="achievements" class="text-input" placeholder="Beschrijf de belangrijkste resultaten en successen van de afgelopen periode"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="challenges">Uitdagingen en leerpunten:</label>
+                        <textarea id="challenges" class="text-input" placeholder="Beschrijf de belangrijkste uitdagingen en leerpunten van de afgelopen periode"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>3. Competentie-evaluatie</h2>
+                    <p>Beoordeel de competenties op een schaal van 1-5:<br>
+                    1 = Onvoldoende, 2 = Matig, 3 = Voldoende, 4 = Goed, 5 = Uitstekend</p>
+                    
+                    <h3>Vakinhoudelijke competenties</h3>
+                    <table class="rating-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Competentie</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Vakkennis"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="1" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="2" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="3" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="4" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="5" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_1" value="na" onclick="updateRating(this, 'comp_tech_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Probleemoplossend vermogen"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="1" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="2" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="3" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="4" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="5" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_2" value="na" onclick="updateRating(this, 'comp_tech_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Kwaliteit van werk"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="1" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="2" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="3" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="4" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="5" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_tech_3" value="na" onclick="updateRating(this, 'comp_tech_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="tech_competencies_notes">Toelichting vakinhoudelijke competenties:</label>
+                        <textarea id="tech_competencies_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van de vakinhoudelijke competenties"></textarea>
+                    </div>
+                    
+                    <h3>Persoonlijke competenties</h3>
+                    <table class="rating-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Competentie</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Zelfstandigheid"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="1" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="2" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="3" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="4" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="5" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_1" value="na" onclick="updateRating(this, 'comp_pers_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Initiatief"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="1" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="2" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="3" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="4" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="5" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_2" value="na" onclick="updateRating(this, 'comp_pers_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Flexibiliteit"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="1" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="2" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="3" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="4" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="5" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_pers_3" value="na" onclick="updateRating(this, 'comp_pers_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="personal_competencies_notes">Toelichting persoonlijke competenties:</label>
+                        <textarea id="personal_competencies_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van de persoonlijke competenties"></textarea>
+                    </div>
+                    
+                    <h3>Samenwerkingscompetenties</h3>
+                    <table class="rating-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Competentie</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Communicatie"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="1" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="2" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="3" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="4" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="5" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_1" value="na" onclick="updateRating(this, 'comp_coll_1')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Samenwerking in team"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="1" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="2" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="3" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="4" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="5" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_2" value="na" onclick="updateRating(this, 'comp_coll_2')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="text-input" placeholder="Feedback geven en ontvangen"></td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="1" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="2" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="3" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="4" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="5" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="comp_coll_3" value="na" onclick="updateRating(this, 'comp_coll_3')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="collaboration_competencies_notes">Toelichting samenwerkingscompetenties:</label>
+                        <textarea id="collaboration_competencies_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van de samenwerkingscompetenties"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Toekomstperspectief</h2>
+                    
+                    <h3>Nieuwe doelstellingen voor komende periode</h3>
+                    <p>Formuleer SMART-doelstellingen (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden)</p>
+                    
+                    <div class="form-group">
+                        <label for="goal_1_next">Doelstelling 1:</label>
+                        <textarea id="goal_1_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal_2_next">Doelstelling 2:</label>
+                        <textarea id="goal_2_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal_3_next">Doelstelling 3:</label>
+                        <textarea id="goal_3_next" class="text-input" placeholder="Beschrijf de doelstelling, inclusief hoe en wanneer deze behaald moet worden"></textarea>
+                    </div>
+                    
+                    <h3>Ontwikkelwensen en -behoeften</h3>
+                    <div class="form-group">
+                        <label for="development_needs">Welke kennis, vaardigheden of competenties wil de medewerker ontwikkelen?</label>
+                        <textarea id="development_needs" class="text-input" placeholder="Beschrijf de ontwikkelwensen en -behoeften van de medewerker"></textarea>
+                    </div>
+                    
+                    <h3>Loopbaanperspectief</h3>
+                    <div class="form-group">
+                        <label for="career_perspective">Hoe ziet de medewerker zijn/haar loopbaan op korte en lange termijn?</label>
+                        <textarea id="career_perspective" class="text-input" placeholder="Beschrijf het loopbaanperspectief van de medewerker"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Actieplan</h2>
+                    
+                    <p>Concrete acties om doelstellingen en ontwikkeling te realiseren:</p>
+                    
+                    <table class="action-table">
+                        <thead>
+                            <tr>
+                                <th>Actie</th>
+                                <th>Wie</th>
+                                <th>Deadline</th>
+                                <th>Benodigde middelen/ondersteuning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Beschrijf de actie"></td>
+                                <td><input type="text" placeholder="Verantwoordelijke"></td>
+                                <td><input type="date"></td>
+                                <td><input type="text" placeholder="Benodigde middelen"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="evaluation_moments">Evaluatiemomenten:</label>
+                        <textarea id="evaluation_moments" class="text-input" placeholder="Beschrijf wanneer en hoe de voortgang wordt geëvalueerd"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>6. Overige bespreekpunten</h2>
+                    
+                    <div class="form-group">
+                        <label for="work_pressure">Werkdruk en werkplezier:</label>
+                        <textarea id="work_pressure" class="text-input" placeholder="Noteer besproken punten over werkdruk, werkplezier en werk-privé balans"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team_collaboration">Samenwerking in team:</label>
+                        <textarea id="team_collaboration" class="text-input" placeholder="Noteer besproken punten over de samenwerking binnen het team"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="other_topics">Overige onderwerpen:</label>
+                        <textarea id="other_topics" class="text-input" placeholder="Noteer andere besproken onderwerpen die niet in bovenstaande categorieën passen"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>7. Conclusie en afspraken</h2>
+                    
+                    <div class="form-group">
+                        <label for="conclusion">Samenvatting belangrijkste punten:</label>
+                        <textarea id="conclusion" class="text-input" placeholder="Vat de belangrijkste punten en conclusies van het gesprek samen"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="follow_up">Vervolgafspraken:</label>
+                        <textarea id="follow_up" class="text-input" placeholder="Beschrijf concrete vervolgafspraken, inclusief wanneer het volgende gesprek plaatsvindt"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_signature">Handtekening medewerker:</label>
+                                <input type="text" id="employee_signature" class="text-input" placeholder="Naam medewerker">
+                                <p><small>Datum: <span id="current_date"></span></small></p>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_signature">Handtekening leidinggevende:</label>
+                                <input type="text" id="manager_signature" class="text-input" placeholder="Naam leidinggevende">
+                                <p><small>Datum: <span id="current_date2"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>

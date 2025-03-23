@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRElevate - Exit Interview Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/ebooks.css">
+    <link rel="stylesheet" href="css/templates.css">
+    <script src="js/exit-interview-template.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HRElevate</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ebooks.html">Ebooks</a></li>
+                <li><a href="courses.html">Cursussen</a></li>
+                <li><a href="consultancy.html">Consultancy</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="ebook-viewer">
+        <div class="container">
+            <div class="template-container">
+                <h1 class="template-title">Exit Interview Template</h1>
+                
+                <section class="template-section">
+                    <h2>Introductie</h2>
+                    <p>Deze template helpt HR-professionals en leidinggevenden bij het voorbereiden, uitvoeren en documenteren van exit interviews. Het biedt een gestructureerde aanpak om waardevolle feedback te verzamelen van vertrekkende medewerkers.</p>
+                    
+                    <p><strong>Instructies:</strong></p>
+                    <ol>
+                        <li>Vul de basisgegevens in voorafgaand aan het gesprek</li>
+                        <li>Gebruik de template tijdens het gesprek om aantekeningen te maken</li>
+                        <li>Vul na afloop de conclusies en afspraken in</li>
+                        <li>Sla het document op en/of print het uit voor administratie</li>
+                        <li>Gebruik de verzamelde informatie om de organisatie te verbeteren</li>
+                    </ol>
+                </section>
+                
+                <section class="template-section">
+                    <h2>1. Basisgegevens</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_name">Naam medewerker:</label>
+                                <input type="text" id="employee_name" class="text-input" placeholder="Volledige naam">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_function">Functie:</label>
+                                <input type="text" id="employee_function" class="text-input" placeholder="Functietitel">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_department">Afdeling:</label>
+                                <input type="text" id="employee_department" class="text-input" placeholder="Afdeling">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="manager_name">Naam leidinggevende:</label>
+                                <input type="text" id="manager_name" class="text-input" placeholder="Naam leidinggevende">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="start_date">Datum in dienst:</label>
+                                <input type="date" id="start_date" class="date-input">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="end_date">Laatste werkdag:</label>
+                                <input type="date" id="end_date" class="date-input">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="interviewer_name">Naam interviewer:</label>
+                                <input type="text" id="interviewer_name" class="text-input" placeholder="Naam interviewer">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="interview_date">Datum exitgesprek:</label>
+                                <input type="date" id="interview_date" class="date-input">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>2. Vertrekreden</h2>
+                    
+                    <div class="form-group">
+                        <label for="exit_reason">Primaire reden voor vertrek:</label>
+                        <select id="exit_reason" class="select-input">
+                            <option value="">Selecteer reden</option>
+                            <option value="new_job">Nieuwe baan</option>
+                            <option value="career_change">Carrièreswitch</option>
+                            <option value="retirement">Pensioen</option>
+                            <option value="relocation">Verhuizing</option>
+                            <option value="health">Gezondheidsredenen</option>
+                            <option value="family">Familieomstandigheden</option>
+                            <option value="education">Opleiding</option>
+                            <option value="dissatisfaction">Onvrede met huidige functie/organisatie</option>
+                            <option value="contract_end">Einde contract</option>
+                            <option value="dismissal">Ontslag</option>
+                            <option value="other">Anders</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exit_reason_details">Toelichting vertrekreden:</label>
+                        <textarea id="exit_reason_details" class="text-input" placeholder="Geef een toelichting op de vertrekreden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Beslissingsfactoren die hebben bijgedragen aan het vertrek:</label>
+                        <ul class="checkbox-list">
+                            <li><input type="checkbox" id="factor_salary" name="factor_salary"><label for="factor_salary">Salaris en secundaire arbeidsvoorwaarden</label></li>
+                            <li><input type="checkbox" id="factor_career" name="factor_career"><label for="factor_career">Carrièremogelijkheden</label></li>
+                            <li><input type="checkbox" id="factor_workload" name="factor_workload"><label for="factor_workload">Werkdruk</label></li>
+                            <li><input type="checkbox" id="factor_balance" name="factor_balance"><label for="factor_balance">Werk-privé balans</label></li>
+                            <li><input type="checkbox" id="factor_management" name="factor_management"><label for="factor_management">Management/leiderschap</label></li>
+                            <li><input type="checkbox" id="factor_culture" name="factor_culture"><label for="factor_culture">Bedrijfscultuur</label></li>
+                            <li><input type="checkbox" id="factor_colleagues" name="factor_colleagues"><label for="factor_colleagues">Samenwerking met collega's</label></li>
+                            <li><input type="checkbox" id="factor_content" name="factor_content"><label for="factor_content">Inhoud van het werk</label></li>
+                            <li><input type="checkbox" id="factor_recognition" name="factor_recognition"><label for="factor_recognition">Erkenning en waardering</label></li>
+                            <li><input type="checkbox" id="factor_personal" name="factor_personal"><label for="factor_personal">Persoonlijke omstandigheden</label></li>
+                            <li><input type="checkbox" id="factor_other" name="factor_other"><label for="factor_other">Anders</label></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="factors_details">Toelichting beslissingsfactoren:</label>
+                        <textarea id="factors_details" class="text-input" placeholder="Geef een toelichting op de beslissingsfactoren"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>3. Evaluatie werkervaring</h2>
+                    <p>Beoordeel de volgende aspecten van de werkervaring op een schaal van 1-5:<br>
+                    1 = Zeer ontevreden, 2 = Ontevreden, 3 = Neutraal, 4 = Tevreden, 5 = Zeer tevreden</p>
+                    
+                    <table class="rating-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Aspect</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>N.v.t.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Werkinhoud en uitdaging</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="1" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="2" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="3" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="4" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="5" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_content" value="na" onclick="updateRating(this, 'aspect_content')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Werkdruk en werk-privé balans</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="1" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="2" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="3" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="4" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="5" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_workload" value="na" onclick="updateRating(this, 'aspect_workload')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Samenwerking met collega's</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="1" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="2" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="3" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="4" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="5" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_colleagues" value="na" onclick="updateRating(this, 'aspect_colleagues')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Leiderschap en management</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="1" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="2" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="3" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="4" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="5" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_leadership" value="na" onclick="updateRating(this, 'aspect_leadership')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ontwikkelmogelijkheden</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="1" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="2" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="3" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="4" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="5" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_development" value="na" onclick="updateRating(this, 'aspect_development')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Beloning en waardering</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="1" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="2" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="3" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="4" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="5" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_compensation" value="na" onclick="updateRating(this, 'aspect_compensation')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Organisatiecultuur</td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="1" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="2" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="3" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="4" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="5" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                                <td class="checkbox-container">
+                                    <input type="checkbox" name="aspect_culture" value="na" onclick="updateRating(this, 'aspect_culture')">
+                                    <div class="checkmark"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="form-group">
+                        <label for="content_notes">Toelichting werkinhoud en uitdaging:</label>
+                        <textarea id="content_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van werkinhoud en uitdaging"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="workload_notes">Toelichting werkdruk en werk-privé balans:</label>
+                        <textarea id="workload_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van werkdruk en werk-privé balans"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="colleagues_notes">Toelichting samenwerking met collega's:</label>
+                        <textarea id="colleagues_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van samenwerking met collega's"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="leadership_notes">Toelichting leiderschap en management:</label>
+                        <textarea id="leadership_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van leiderschap en management"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="development_notes">Toelichting ontwikkelmogelijkheden:</label>
+                        <textarea id="development_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van ontwikkelmogelijkheden"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="compensation_notes">Toelichting beloning en waardering:</label>
+                        <textarea id="compensation_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van beloning en waardering"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="culture_notes">Toelichting organisatiecultuur:</label>
+                        <textarea id="culture_notes" class="text-input" placeholder="Geef een toelichting op de beoordeling van organisatiecultuur"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>4. Feedback voor de organisatie</h2>
+                    
+                    <div class="form-group">
+                        <label for="positive_aspects">Wat waardeerde je het meest aan het werken bij onze organisatie?</label>
+                        <textarea id="positive_aspects" class="text-input" placeholder="Beschrijf de positieve aspecten van het werken bij de organisatie"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="improvement_areas">Wat zou de organisatie kunnen verbeteren?</label>
+                        <textarea id="improvement_areas" class="text-input" placeholder="Beschrijf verbeterpunten voor de organisatie"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prevent_leaving">Heb je suggesties om soortgelijk vertrek in de toekomst te voorkomen?</label>
+                        <textarea id="prevent_leaving" class="text-input" placeholder="Beschrijf suggesties om vertrek van andere medewerkers te voorkomen"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recommend">Zou je onze organisatie aanbevelen als werkgever? Waarom wel/niet?</label>
+                        <textarea id="recommend" class="text-input" placeholder="Beschrijf of je de organisatie zou aanbevelen als werkgever en waarom"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>5. Nieuwe werksituatie</h2>
+                    
+                    <div class="form-group">
+                        <label for="new_position">Nieuwe functie/organisatie (indien van toepassing):</label>
+                        <input type="text" id="new_position" class="text-input" placeholder="Beschrijf de nieuwe functie en/of organisatie">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new_benefits">Wat biedt de nieuwe werkomgeving dat onze organisatie niet bood?</label>
+                        <textarea id="new_benefits" class="text-input" placeholder="Beschrijf wat de nieuwe werkomgeving biedt dat onze organisatie niet bood"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>6. Overdracht en afsluiting</h2>
+                    
+                    <div class="form-group">
+                        <label for="handover_status">Status van werkzaamheden en overdracht:</label>
+                        <textarea id="handover_status" class="text-input" placeholder="Beschrijf de status van lopende werkzaamheden en de overdracht"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company_property">Status van bedrijfseigendommen (laptop, telefoon, sleutels, etc.):</label>
+                        <textarea id="company_property" class="text-input" placeholder="Beschrijf welke bedrijfseigendommen nog moeten worden ingeleverd en wanneer"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="final_arrangements">Afspraken over laatste werkdag en afscheid:</label>
+                        <textarea id="final_arrangements" class="text-input" placeholder="Beschrijf afspraken over de laatste werkdag en het afscheid"></textarea>
+                    </div>
+                </section>
+                
+                <section class="template-section">
+                    <h2>7. Conclusie en ondertekening</h2>
+                    
+                    <div class="form-group">
+                        <label for="summary">Samenvatting belangrijkste punten:</label>
+                        <textarea id="summary" class="text-input" placeholder="Vat de belangrijkste punten uit het exitgesprek samen"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="follow_up">Vervolgacties:</label>
+                        <textarea id="follow_up" class="text-input" placeholder="Beschrijf eventuele vervolgacties naar aanleiding van het exitgesprek"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="employee_signature">Handtekening medewerker:</label>
+                                <input type="text" id="employee_signature" class="text-input" placeholder="Naam medewerker">
+                                <p><small>Datum: <span id="current_date"></span></small></p>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="interviewer_signature">Handtekening interviewer:</label>
+                                <input type="text" id="interviewer_signature" class="text-input" placeholder="Naam interviewer">
+                                <p><small>Datum: <span id="current_date2"></span></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="button-group">
+                    <button id="save-button" class="save-button">Opslaan</button>
+                    <button id="load-button" class="save-button">Laden</button>
+                    <button id="reset-button" class="reset-button">Reset</button>
+                    <button id="print-button" class="print-button">Afdrukken</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>HRElevate</h4>
+                <p>Professioneel HR advies voor organisaties die willen groeien en hun medewerkers willen laten excelleren.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ebooks.html">Ebooks</a></li>
+                    <li><a href="courses.html">Cursussen</a></li>
+                    <li><a href="consultancy.html">Consultancy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Blog</a></li>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="resources.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@hrelevate.nl">info@hrelevate.nl</a></li>
+                    <li><a href="tel:+31612345678">+31 6 12345678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HRElevate. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html>
